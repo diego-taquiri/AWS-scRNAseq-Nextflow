@@ -3,7 +3,28 @@
 
 This repository contains two bioinformatics analysis pipelines I deployed using AWS cloud resources. These projects consist of single-cell RNA sequencing (scRNA-seq) and RNA sequencing (RNA-seq) pipelines. Below is a summary of the two pipelines, the infrastructure setup, and the tools I used.
 
-## Pipeline 1: Single-cell RNA Sequencing with Nextflow & AWS Batch
+# Pipeline 1: scRNA-seq Downstream Analysis
+
+I ran the **nf-core/scdownstream** pipeline using Nextflow and AWS Batch. This pipeline is designed to processes quantified single-cell RNA-seq data from pipeline 2 below. The pipeline is optimized for quality control, integration, dimensionality reduction, and clustering of scRNA-seq datasets.
+
+## Key Steps & Tools
+
+- **Quality Control**: MultiQC
+- **Doublet Detection**: scrublet, DoubletDetection, SCDS
+- **Integration**: scVI, harmony, bbknn, combat
+- **Dimensionality Reduction**: UMAP
+- **Clustering**: Leiden
+- **Cell Type Annotation**: celltypist
+
+## Cloud Infrastructure
+
+The pipeline runs on AWS infrastructure, leveraging the following services:
+
+- **AWS Batch**: Used for orchestrating the computational tasks and auto-scaling based on resource demands.
+- **S3 Storage**: Stores input data, intermediate files, and final results.
+- **Nextflow Tower**: Employed to manage and monitor pipeline execution, providing scalability and control over workflow execution.
+
+## Pipeline 2: Single-cell RNA Sequencing with Nextflow & AWS Batch
 
 I ran the nf-core/scrnaseq pipeline using Nextflow and AWS Batch. This pipeline is designed to process 10X Genomics single-cell RNA-seq data. 
 
