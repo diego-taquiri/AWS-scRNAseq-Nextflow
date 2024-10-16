@@ -1,7 +1,7 @@
 # AWS-scRNAseq-Nextflow
 # Bioinformatics Pipelines with AWS Cloud Infrastructure
 
-This repository contains two bioinformatics analysis pipelines I deployed using AWS cloud resources. These projects consist of single-cell RNA sequencing (scRNA-seq) and RNA sequencing (RNA-seq) pipelines. Below is a summary of the two pipelines, the infrastructure setup, and the tools I used.
+This repository contains three bioinformatics analysis pipelines I deployed using AWS cloud resources. These projects include two single-cell RNA sequencing (scRNA-seq) pipelines and one bulk RNA sequencing (RNA-seq) pipeline. Below is a summary of the three pipelines, the infrastructure setup, and the tools I used.
 
 # Pipeline 1: scRNA-seq Downstream Analysis
 
@@ -15,6 +15,10 @@ I ran the **nf-core/scdownstream** pipeline using Nextflow and AWS Batch. This p
 - **Dimensionality Reduction**: UMAP
 - **Clustering**: Leiden
 - **Cell Type Annotation**: celltypist
+
+![scVI Leiden Clustering (Resolution 1.0)](results/cluster_dimred/scvi/leiden/1.0/scvi-global-1.0_leiden.png)
+
+The following image shows the clustering of cells using the Leiden algorithm with a resolution of 1.0, processed through the scVI model.
 
 ## Cloud Infrastructure
 
@@ -49,7 +53,7 @@ This pipeline utilized several AWS services, including:
 - **AWS Batch**: Managed the compute environment to run the pipeline efficiently.
 - **IAM Roles**: Configured IAM roles with appropriate permissions for AWS Batch and S3 interactions.
 
-## Pipeline 2: RNA-seq Pipeline Using Nextflow
+## Pipeline 3: RNA-seq Pipeline Using Nextflow
 
 The second pipeline involved running the Nextflow RNA-seq pipeline to analyze bulk RNA sequencing data. Unlike the first project, I executed this pipeline directly from the command line without Nextflow Tower.
 
